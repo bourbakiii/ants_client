@@ -1,1 +1,19 @@
+@import 'reset-css';
 @import "./transitions.scss";
+
+*{
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  flex-direction: column;
+  min-height:100vh;
+}
+#__nuxt {
+  max-width: $maxwidth;
+  width:100%;
+  flex-grow: 1;
+  box-shadow: 0 0 10px 1px rgba(black,.3);
+}
