@@ -2,3 +2,32 @@ $transition: .3s;
 
 $maxwidth: 1058px;
 $page_padding: 45px;
+$page_padding_mobile: 15px;
+
+// Breakpoints //
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$wxp: 1440px;
+$wxpp: 1600px;
+$fhd: 1920px;
+$qhd: 2560px;
+
+$horizontal: landscape;
+$vertical: portrait;
+
+
+// media devices
+@mixin max-md {
+  @media screen and (max-width: #{$md}) {
+    @content;
+  }
+}
+
+@mixin min-md {
+  @media screen and (min-width: #{$md+1}) {
+    @content;
+  }
+}
