@@ -26,9 +26,16 @@ export default {
 .categories-sidebar {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;,kn+
-
+  justify-content: flex-start;
+  border: 1px solid black;
   flex-direction: column;
-
+  max-width: 200px;
+  height: auto;
+  &__category{
+    margin-bottom: 10px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
 }
 </style>
