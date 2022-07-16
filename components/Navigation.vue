@@ -1,6 +1,6 @@
 <template>
   <header class="navigation">
-    <div class="navigation__top">
+    <div class="navigation__top paddinged">
       <svg class="navigation__top__burger adaptive" width="30px" height="30px">
         <use xlink:href="@/assets/sprites.svg#burger"></use>
       </svg>
@@ -20,7 +20,7 @@
         <use xlink:href="@/assets/sprites.svg#basket"></use>
       </svg>
     </div>
-    <div class="navigation__bottom">
+    <div class="navigation__bottom paddinged">
       <div class="navigation__bottom__search">
         <input placeholder="Поиск по товарам" type="text" class="navigation__bottom__search__input"/>
         <button class="navigation__bottom__search__button">S</button>
@@ -55,10 +55,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    padding: 0 $page_padding;
-    @include max-md {
-      padding: 0 $page_padding_mobile;
-    }
+
 
     &__logotype {
       height: auto;

@@ -35,3 +35,9 @@ button{
     display: none !important;
   }
 }
+.paddinged{
+  padding: 0 $page_padding;
+  @include max-md {
+    padding: 0 $page_padding_mobile;
+  }
+}
