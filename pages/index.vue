@@ -1,21 +1,32 @@
 <template>
   <main class="page index-page paddinged">
-    <CategoriesSidebar class="index-page__categories-sidebar"/>
+    <CategoriesSidebar :categories="categories" class="index-page__categories-sidebar non-adaptive"/>
+    <CategoriesDropdown :categories="categories" class="index-page__categories-dropdown adaptive"/>
     <div class="index-page__content">
-      <Product v-for="product in products" :key='product' :product="product"/>
+      <Product v-for="product in products" :key='product.id' :product="product"/>
     </div>
   </main>
 </template>
 
 <script>
-import CategoriesSidebar from "@/components/CategoriesSidebar";
+import CategoriesSidebar from "@/components/Categories/Sidebar";
+import CategoriesDropdown from "@/components/Categories/Dropdown";
 import Product from '@/components/Product';
 
 export default {
-  components: {CategoriesSidebar, Product},
+  components: {CategoriesSidebar, CategoriesDropdown, Product},
 
   data() {
     return {
+      categories: [
+        {id: 1, name: "Первая категория"},
+        {id: 2, name: "Вторая категория"},
+        {id: 3, name: "Третья категория"},
+        {id: 4, name: "Четвертая категория"},
+        {id: 5, name: "Пятая категория"},
+        {id: 6, name: "Шестая категория"},
+        {id: 7, name: "Седьмая категория"}
+      ],
       products: [
         {
           id: 1,
@@ -86,12 +97,18 @@ export default {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  flex-direction:row;
-  &__categories-sidebar{
+  flex-direction: row;
+
+  @include max-md {
+    flex-direction: column;
+  }
+
+  &__categories-sidebar {
     width: 200px;
-    margin-right:10px;
+    margin-right: 10px;
     flex-shrink: 0;
   }
+
   &__content {
     flex-grow: 1;
     display: grid;

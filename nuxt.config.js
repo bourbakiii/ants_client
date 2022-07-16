@@ -3,13 +3,13 @@ export default {
   head: {
     title: 'ants_client',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: ''},
+      {name: 'format-detection', content: 'telephone=no'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
   },
 
@@ -18,16 +18,11 @@ export default {
     '@assets/scss/style.scss'
   ],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
-
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-  ],
+  buildModules: [],
   styleResources: {
     scss: [
       '@assets/scss/variables.scss'
@@ -42,21 +37,23 @@ export default {
     baseURL: '/',
   },
 
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {},
+
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'ru'
     }
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
   pageTransition: {
     name: 'page',
     mode: 'out-in',
     appear: true
   },
+
   loading: {
     failedColor: '#F95738',
     color: '#0EA976',

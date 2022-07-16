@@ -5,19 +5,14 @@
   </aside>
 </template>
 <script>
+import commoned from "./commoned.js";
 
 export default {
-  data() {
-    return {
-      categories: [
-        {id: 1, name: "Первая категория"},
-        {id: 2, name: "Вторая категория"},
-        {id: 3, name: "Третья категория"},
-        {id: 4, name: "Четвертая категория"},
-        {id: 5, name: "Пятая категория"},
-        {id: 6, name: "Шестая категория"},
-        {id: 7, name: "Седьмая категория"}
-      ]
+  mixins: [commoned],
+  props: {
+    categories: {
+      required: true,
+      type: Array
     }
   }
 }
@@ -31,9 +26,11 @@ export default {
   flex-direction: column;
   max-width: 200px;
   height: auto;
-  &__category{
+
+  &__category {
     margin-bottom: 10px;
-    &:last-child{
+
+    &:last-child {
       margin-bottom: 0;
     }
   }
