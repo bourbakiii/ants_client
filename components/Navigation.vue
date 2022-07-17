@@ -32,7 +32,7 @@
         <NuxtLink class="navigation__bottom__links__link" to="">Четвертая</NuxtLink>
       </nav>
       <div class="navigation__bottom__authorization non-adaptive">
-        <button class="navigation__bottom__authorization__login">Войти</button>
+        <button @click="show_login=!show_login" class="navigation__bottom__authorization__login">Войти</button>
         <NuxtLink to="/registration" class="navigation__bottom__authorization__registration">Регистрация</NuxtLink>
       </div>
       <div class="navigation__bottom__left adaptive">
@@ -40,14 +40,56 @@
         <a href="mailto:vgum@mail.ru" class="navigation__bottom__email">E</a>
       </div>
       <div class="navigation__bottom__right adaptive">
-        <button class="navigation__bottom__login">L</button>
+        <button @click="show_login=!show_login" class="navigation__bottom__login">L</button>
         <NuxtLink class="navigation__bottom__registration" to="registration">R</NuxtLink>
       </div>
     </div>
+    <form v-click-outside v-if="show_login" @submit.prevent="login" class="navigation__login-form">
+      <p class="navigation__login-form__title">Войти</p>
+      <InputBlock class="navigation__login-form__email"
+                  :properties="{id: 'login-form-email', placeholder: 'Email',type:'email'}"/>
+      <InputBlock class="navigation__login-form_password"
+                  :properties="{id: 'login-form-password', placeholder: 'Пароль',type:'password'}"/>
+      <button class="navigation__login-form__submit">Войти</button>
+    </form>
   </header>
 </template>
+<script>
+import InputBlock from "@/components/InputBlock";
+
+export default {
+
+  components: {InputBlock},
+  data() {
+    return {
+      show_login: false
+    }
+  },
+  directives: {
+    'click-outside': {
+      bind(el, binding, vnode) {
+        el.clickOutsideEvent = (event) => {
+          if (!(el == event.target || el.contains(event.target))) {
+            this.show_login = false;
+          }
+        };
+        document.body.addEventListener('click', el.clickOutsideEvent)
+      }
+    },
+    unbind(el) {
+      document.body.removeEventListener('click', el.clickOutsideEvent)
+    }
+  },
+  methods: {
+    login() {
+      console.log("Login function");
+    }
+  }
+}
+</script>
 <style lang="scss">
 .navigation {
+  position: relative;
   width: 100%;
   border: 1px solid black;
   display: flex;
@@ -120,6 +162,16 @@
       flex-direction: row;
       align-items: center;
     }
+  }
+
+  &__login-form {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    padding: 10px;
+    background-color: white;
+    filter: drop-shadow(0px 0px 4px rgba(black, .5));
+    border-radius: 5px;
   }
 }
 </style>
