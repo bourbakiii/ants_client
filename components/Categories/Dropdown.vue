@@ -8,7 +8,6 @@
   </div>
 </template>
 <script>
-
 import commoned from "./commoned.js";
 
 export default {
@@ -17,7 +16,7 @@ export default {
     return {
       show_dropdown: false
     }
-  },
+  }
 }
 </script>
 <style lang="scss">

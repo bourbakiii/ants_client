@@ -15,7 +15,6 @@ import Product from '@/components/Product';
 
 export default {
   components: {CategoriesSidebar, CategoriesDropdown, Product},
-
   data() {
     return {
       categories: [
@@ -112,7 +111,8 @@ export default {
   &__content {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    background-color: red;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     grid-gap: 30px;
   }
 }

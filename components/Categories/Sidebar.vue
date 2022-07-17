@@ -9,12 +9,6 @@ import commoned from "./commoned.js";
 
 export default {
   mixins: [commoned],
-  props: {
-    categories: {
-      required: true,
-      type: Array
-    }
-  }
 }
 </script>
 <style lang="scss">

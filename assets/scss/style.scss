@@ -12,9 +12,27 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+#__nuxt{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
 
-button{
+#__layout, .layout {
+  width:100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+button {
   cursor: pointer;
+}
+
+.page {
+  flex-grow: 1;
 }
 
 #__nuxt {
@@ -30,12 +48,14 @@ button{
     display: none !important;
   }
 }
-.adaptive{
-  @include min-md{
+
+.adaptive {
+  @include min-md {
     display: none !important;
   }
 }
-.paddinged{
+
+.paddinged {
   padding: 0 $page_padding;
   @include max-md {
     padding: 0 $page_padding_mobile;

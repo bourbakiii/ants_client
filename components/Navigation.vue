@@ -21,19 +21,27 @@
       </svg>
     </div>
     <div class="navigation__bottom paddinged">
-      <div class="navigation__bottom__search">
+      <div class="navigation__bottom__search non-adaptive">
         <input placeholder="Поиск по товарам" type="text" class="navigation__bottom__search__input"/>
         <button class="navigation__bottom__search__button">S</button>
       </div>
-      <nav class="navigation__bottom__links">
+      <nav class="navigation__bottom__links non-adaptive">
         <NuxtLink class="navigation__bottom__links__link" to="">Первая</NuxtLink>
         <NuxtLink class="navigation__bottom__links__link" to="">Вторая</NuxtLink>
         <NuxtLink class="navigation__bottom__links__link" to="">Третья</NuxtLink>
         <NuxtLink class="navigation__bottom__links__link" to="">Четвертая</NuxtLink>
       </nav>
-      <div class="navigation__bottom__authorization">
+      <div class="navigation__bottom__authorization non-adaptive">
         <button class="navigation__bottom__authorization__login">Войти</button>
-        <NuxtLink to="" class="navigation__bottom__authorization__registration">Регистрация</NuxtLink>
+        <NuxtLink to="/registration" class="navigation__bottom__authorization__registration">Регистрация</NuxtLink>
+      </div>
+      <div class="navigation__bottom__left adaptive">
+        <a href="tel:+79855681761" class="navigation__bottom__phone">Т</a>
+        <a href="mailto:vgum@mail.ru" class="navigation__bottom__email">E</a>
+      </div>
+      <div class="navigation__bottom__right adaptive">
+        <button class="navigation__bottom__login">L</button>
+        <NuxtLink class="navigation__bottom__registration" to="registration">R</NuxtLink>
       </div>
     </div>
   </header>
