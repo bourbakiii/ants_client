@@ -9,7 +9,7 @@ export default {
       {name: 'format-detection', content: 'telephone=no'}
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
     ]
   },
 
@@ -29,7 +29,7 @@ export default {
     ]
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/style-resources', 'cookie-universal-nuxt', '@nuxtjs/axios', '@nuxt/image'],
+  modules: ['@nuxtjs/style-resources', 'cookie-universal-nuxt', '@nuxtjs/axios', '@nuxt/image', '@nuxtjs/google-fonts'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -60,4 +60,11 @@ export default {
     height: '5px',
     throttle: 0
   },
+
+  googleFonts: {
+    families: {
+      "Libre+Baskerville": true,
+      "Comfortaa": true
+    }
+  }
 }

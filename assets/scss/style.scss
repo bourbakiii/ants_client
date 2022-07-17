@@ -3,6 +3,9 @@
 
 * {
   box-sizing: border-box;
+    //font-family: "Libre+Baskerville" !important;
+  //  font-weight: 400;
+
 }
 
 body {
@@ -11,8 +14,11 @@ body {
   justify-content: flex-start;
   flex-direction: column;
   min-height: 100vh;
+  font-family: 'Comfortaa', sans-serif ;
+
 }
-#__nuxt{
+
+#__nuxt {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -20,13 +26,14 @@ body {
 }
 
 #__layout, .layout {
-  width:100%;
+  width: 100%;
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
 }
+
 button {
   cursor: pointer;
 }
