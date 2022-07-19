@@ -21,7 +21,7 @@
 
     <InputBlock class="registration-page__input-block" v-model="form.password_confirmation"
                 :properties="{text:'Повтор пароля', type:'password'}"/>
-    <button class="registration-page__submit">Зарегистрироваться</button>
+    <button type="button" @click="$fetch" class="registration-page__submit">Зарегистрироваться</button>
   </form>
 </template>
 <script>
@@ -40,17 +40,25 @@ export default {
       }
     }
   },
-  methods: {
-    registrate() {
-      console.log("Registrate function");
-      this.$axios.get('/api/users').then(response => {
-        console.log("response is:");
-        console.log(response);
-      }).catch((error) => {
-        console.log(error);
-      }).finally(console.log("Ended"));
-    }
-  }
+  async fetch(){
+    await this.$axios.get('/api/users').then(response => {
+      console.log("response is:");
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    }).finally(console.log("Ended"));
+  },
+  // methods: {
+  //   registrate() {
+  //     console.log("Registrate function");
+  //     this.$axios.get('/api/users').then(response => {
+  //       console.log("response is:");
+  //       console.log(response);
+  //     }).catch((error) => {
+  //       console.log(error);
+  //     }).finally(console.log("Ended"));
+  //   }
+  // }
 }
 </script>
 <style lang="scss">
