@@ -1,64 +1,72 @@
 <template>
   <form @submit.prevent="registrate" class="page registration-page">
+
+    Loading: {{ loading }}
+    <br>
     <h1 class="registration-page__title">Регистрация пользователя</h1>
     <InputBlock class="registration-page__input-block" v-model="form.name"
-                :properties="{text:'Имя', type:'text'}"/>
+                :properties="{id: 'registration-name', text:'Имя', type:'text', name:'name'}"/>
 
     <InputBlock class="registration-page__input-block" v-model="form.surname"
-                :properties="{text:'Фамилия', type:'text'}"/>
+                :properties="{id: 'registration-surname',text:'Фамилия', type:'text', name:'surname'}"/>
 
     <InputBlock class="registration-page__input-block" v-model="form.father_name"
-                :properties="{text:'Отчество', type:'text'}"/>
+                :properties="{id: 'registration-father_name',text:'Отчество', type:'text', name:'father_name'}"/>
 
     <InputBlock class="registration-page__input-block" v-model="form.phone"
-                :properties="{text:'Телефон', type:'text', phone_mask: true}"/>
+                :properties="{id: 'registration-phone',text:'Телефон', type:'text',name:'phone', phone_mask: true}"/>
 
     <InputBlock class="registration-page__input-block" v-model="form.email"
-                :properties="{text:'Email', type:'email'}"/>
+                :properties="{id: 'registration-email',text:'Email', type:'email',name:'email'}"/>
 
     <InputBlock class="registration-page__input-block" v-model="form.password"
-                :properties="{text:'Пароль', type:'password'}"/>
+                :properties="{id: 'registration-password',text:'Пароль', type:'password',name:'password'}"/>
 
     <InputBlock class="registration-page__input-block" v-model="form.password_confirmation"
-                :properties="{text:'Повтор пароля', type:'password'}"/>
-    <button type="button" @click="$fetch" class="registration-page__submit">Зарегистрироваться</button>
+                :properties="{id: 'registration-password_confirmation',text:'Повтор пароля', type:'password', name:'password_confirmation'}"/>
+    <button class="registration-page__submit">Зарегистрироваться</button>
+    <ValidationMessages :messages="validation_messages" class="registration-page__validation-messages"/>
   </form>
 </template>
 <script>
 import InputBlock from "@/components/InputBlock";
+import ValidationMessages from "@/components/Validation/Messages";
 
 export default {
-  components: {InputBlock},
+  components: {InputBlock, ValidationMessages},
   data() {
     return {
+      loading: false,
       form: {
         name: null, surname: null, father_name: null,
         phone: null,
         email: 'somemail@mail.ru',
         password: null,
         password_confirmation: null
-      }
+      },
+      validation_messages: []
     }
   },
-  async fetch(){
-    await this.$axios.get('/api/users').then(response => {
-      console.log("response is:");
-      console.log(response);
-    }).catch((error) => {
-      console.log(error);
-    }).finally(console.log("Ended"));
-  },
-  // methods: {
-  //   registrate() {
-  //     console.log("Registrate function");
-  //     this.$axios.get('/api/users').then(response => {
-  //       console.log("response is:");
-  //       console.log(response);
-  //     }).catch((error) => {
-  //       console.log(error);
-  //     }).finally(console.log("Ended"));
-  //   }
-  // }
+
+  methods: {
+    async registrate() {
+      await this.$axios.post('/api/users/create', this.form)
+        .then(response => {
+          console.log("response is:");
+          console.log(response);
+        })
+        .catch(({response}) => {
+          if (response && response.status === 422) {
+            console.log(response.data)
+            this.validation_messages = response.data.data.errors;
+          }
+        })
+        .finally(() => {
+          console.log("its over");
+          this.loading = false
+        });
+    }
+  }
 }
 </script>
 <style lang="scss">

@@ -7,6 +7,7 @@
              v-mask="properties.phone_mask?'(###) ###-##-##':''"
              @input="$emit('input', $event.target.value)"
              :type="properties.type||'text'"
+             :name="properties.name"
              :placeholder="properties.phone_mask?'(000) 000 00 00':properties.placeholder"/>
     </div>
   </label>
