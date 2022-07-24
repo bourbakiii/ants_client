@@ -1,6 +1,6 @@
 <template>
   <label type="text" :for="`input-block-${properties.id}`" class="input-block">
-    <p class="input-block__name">{{ properties.text }}</p>
+    <p v-if="properties.text" class="input-block__name">{{ properties.text }}</p>
     <div class="input-block__input-wrapper" :class="{'input-block__input-wrapper_with-digit':properties.phone_mask}"
          digit="+7">
       <input class="input-block__input" :class="{'input-block__input_with-digit':properties.phone_mask}"
@@ -32,8 +32,11 @@ export default {
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-
+  width:100%;
+  background-color: red;
   &__name {
+    width: 30%;
+    padding-right:10px;
   }
 
   &__input {
@@ -46,7 +49,7 @@ export default {
     &-wrapper {
       position: relative;
       display: flex;
-
+      width:100%;
       &_with-digit {
         &::before {
           position: absolute;

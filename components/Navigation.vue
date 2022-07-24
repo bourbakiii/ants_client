@@ -44,47 +44,22 @@
         <NuxtLink class="navigation__bottom__registration" to="registration">R</NuxtLink>
       </div>
     </div>
-    <form v-click-outside v-if="show_login" @submit.prevent="login" class="navigation__login-form">
-      <p class="navigation__login-form__title">Войти</p>
-      <InputBlock class="navigation__login-form__email"
-                  :properties="{id: 'login-form-email', placeholder: 'Email',type:'email'}"/>
-      <InputBlock class="navigation__login-form_password"
-                  :properties="{id: 'login-form-password', placeholder: 'Пароль',type:'password'}"/>
-      <button class="navigation__login-form__submit">Войти</button>
-    </form>
+    <FormsLogin @close="show_login=false" v-if="show_login" class="navigation__login-form"/>
   </header>
 </template>
 <script>
-import InputBlock from "@/components/InputBlock";
+import FormsLogin from "@/components/Forms/Login.vue";
 
 export default {
+  components: {FormsLogin},
 
-  components: {InputBlock},
   data() {
     return {
-      show_login: false
+      show_login: false,
     }
   },
-  directives: {
-    'click-outside': {
-      bind(el, binding, vnode) {
-        el.clickOutsideEvent = (event) => {
-          if (!(el == event.target || el.contains(event.target))) {
-            this.show_login = false;
-          }
-        };
-        document.body.addEventListener('click', el.clickOutsideEvent)
-      }
-    },
-    unbind(el) {
-      document.body.removeEventListener('click', el.clickOutsideEvent)
-    }
-  },
-  methods: {
-    login() {
-      console.log("Login function");
-    }
-  }
+
+
 }
 </script>
 <style lang="scss">
@@ -168,10 +143,7 @@ export default {
     position: absolute;
     right: 0;
     top: 100%;
-    padding: 10px;
-    background-color: white;
-    filter: drop-shadow(0px 0px 4px rgba(black, .5));
-    border-radius: 5px;
+    width: 300px;
   }
 }
 </style>

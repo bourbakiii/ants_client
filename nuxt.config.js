@@ -29,7 +29,7 @@ export default {
     ]
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/style-resources', 'cookie-universal-nuxt', '@nuxtjs/axios', '@nuxt/image', '@nuxtjs/google-fonts'],
+  modules: ['@nuxtjs/style-resources', 'cookie-universal-nuxt', '@nuxtjs/axios', '@nuxt/image'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -58,14 +58,7 @@ export default {
   loading: {
     failedColor: '#F95738',
     color: '#0EA976',
-    height: '5px',
+    height: '10px',
     throttle: 0
-  },
-
-  googleFonts: {
-    families: {
-      "Libre+Baskerville": true,
-      "Comfortaa": true
-    }
   }
 }

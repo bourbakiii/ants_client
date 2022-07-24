@@ -50,20 +50,17 @@ export default {
 
   methods: {
     async registrate() {
+      this.loading = true;
+      this.validation_messages = [];
       await this.$axios.post('/api/users/create', this.form)
-        .then(response => {
-          console.log("response is:");
-          console.log(response);
+        .then(() => {
+          this.$router.push("/");
         })
         .catch(({response}) => {
-          if (response && response.status === 422) {
-            console.log(response.data)
-            this.validation_messages = response.data.data.errors;
-          }
+          if (response && response.status === 422) this.validation_messages = response.data.data.errors;
         })
         .finally(() => {
-          console.log("its over");
-          this.loading = false
+          this.loading = false;
         });
     }
   }
