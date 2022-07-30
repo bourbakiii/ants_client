@@ -14,3 +14,14 @@
     position: absolute;
   }
 }
+
+.opacity {
+  &-enter, &-leave-to {
+    opacity: 0
+  }
+
+
+  &-enter-active, &-leave-active {
+    transition: all $transition;
+  }
+}

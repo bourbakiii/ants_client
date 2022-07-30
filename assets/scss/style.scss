@@ -1,10 +1,13 @@
-@import 'reset-css';
+@import "reset-css";
 @import "./transitions.scss";
 
 * {
   box-sizing: border-box;
-}
 
+
+}html{
+   overflow-y: overlay;
+ }
 body {
   display: flex;
   align-items: center;
@@ -63,5 +66,12 @@ button {
   padding: 0 $page_padding;
   @include max-md {
     padding: 0 $page_padding_mobile;
+  }
+}
+
+.ovh{overflow: hidden;}
+.non-scrollbar{
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

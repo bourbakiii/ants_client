@@ -18,7 +18,7 @@ $qhd: 2560px;
 $horizontal: landscape;
 $vertical: portrait;
 
-
+$z_modals: 100;
 // media devices
 @mixin max-md {
   @media screen and (max-width: #{$md}) {

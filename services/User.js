@@ -1,4 +1,4 @@
-import $store from '@/store/user.js';
+// import $store from '@/store/user.js';
 console.log(this )
 class UserService {
   login(user) {
