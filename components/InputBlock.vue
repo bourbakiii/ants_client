@@ -4,6 +4,7 @@
     <div class="input-block__input-wrapper" :class="{'input-block__input-wrapper_with-digit':properties.phone_mask}"
          digit="+7">
       <input v-if="properties.type!=='textarea'" class="input-block__input"
+             :id="properties.id"
              :class="{'input-block__input_with-digit':properties.phone_mask}"
              :required="properties.required"
              v-mask="properties.phone_mask?'(###) ###-##-##':''"
@@ -12,6 +13,7 @@
              :name="properties.name"
              :placeholder="properties.phone_mask?'(000) 000 00 00':properties.placeholder"/>
       <textarea v-else class="input-block__input"
+                :id="properties.id"
                 :required="properties.required"
                 :value="value" @input="updateValue"
                 :name="properties.name"
@@ -38,11 +40,8 @@ export default {
   directives: {mask: VueMaskDirective},
   methods: {
     updateValue(event) {
-      this.$emit('input', event.target.value)
+      this.$emit('input', event.target.value);
     }
-  },
-  mounted() {
-    console.log(this);
   }
 }
 </script>
