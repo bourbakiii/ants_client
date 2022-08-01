@@ -16,8 +16,8 @@
               :class="{'cms-modal__tabs__item_active': current_tab_name==='Stock'}" class="cms-modal__tabs__item">Акция
       </button>
     </div>
-    <transition name="tabs-swiper-transition" mode="out-in">
-    <component v-if="component" :is="component" class="cms-modal__content"/>
+    <transition name="opacity" mode="out-in">
+      <component v-if="component" :is="component" class="cms-modal__content"/>
     </transition>
   </div>
 </template>
@@ -26,11 +26,15 @@ export default {
   data() {
     return {
       current_tab_name: 'Product',
-      component: () => import('../Modals/CMSSlots/Product.vue')
+      component: () => import('../Modals/CMSSlots/Product/Index.vue')
     }
   },
   methods: {
     switchTabOn($$tab_name) {
+
+      if ($$tab_name === 'Product') $$tab_name = 'Product/Index';
+
+
       this.current_tab_name = $$tab_name;
       this.component = () => import(`../Modals/CMSSlots/${this.current_tab_name}.vue`);
     }
@@ -38,19 +42,6 @@ export default {
 }
 </script>
 <style lang="scss">
-.tabs-swiper-transition{
-  &-enter{
-    transform: translateX(-60px);
-    opacity:0;
-  }
-  &-leave-to{
-    transform: translateX(60px);
-    opacity:0;
-  }
-  &-enter-active, &-leave-active{
-    transition: all .4s;
-  }
-}
 .cms-modal {
   background-color: white;
   padding: 10px;
@@ -58,13 +49,15 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+
   &__tabs {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    align-self:center;
+    align-self: center;
     margin-bottom: 30px;
+
     &__item {
       margin-right: 30px;
       height: 40px;
@@ -80,8 +73,9 @@ export default {
       }
     }
   }
-  &__content{
-    width:100%;
+
+  &__content {
+    width: 100%;
     border: 1px solid black;
     padding: $page_padding_mobile;
   }

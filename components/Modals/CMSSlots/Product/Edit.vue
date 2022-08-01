@@ -1,28 +1,28 @@
 <template>
-  <form @submit.prevent="add" class="cms-content">
-    <h3 class="cms-content__title">Добавить продукт</h3>
-    <InputBlock class="cms-content__input-block" v-model="form.file"
+  <form @submit.prevent="add" class="cms-form">
+    <h3 class="cms-form__title">Изменить продукт (тут та же форма что и при добавлении)</h3>
+    <InputBlock class="cms-form__input-block" v-model="form.file"
                 :properties="{id: 'cms-add-product-image', text:'Изображение', type:'file', name:'image', required:true}"/>
-    <InputBlock class="cms-content__input-block" v-model="form.name"
+    <InputBlock class="cms-form__input-block" v-model="form.name"
                 :properties="{id: 'cms-add-product-name', text:'Название', type:'text', name:'name', required:true}"/>
-    <InputBlock class="cms-content__input-block" v-model="form.description"
+    <InputBlock class="cms-form__input-block" v-model="form.description"
                 :properties="{id: 'cms-add-product-description', text:'Описание', type:'textarea', name:'description', required:true}"/>
-    <div class="cms-content__variations">
-      <h4 class="cms-content__variations__title">Вариации</h4>
-      <div class="cms-content__variations__item" :key="`variation-${index}`"
+    <div class="cms-form__variations">
+      <h4 class="cms-form__variations__title">Вариации</h4>
+      <div class="cms-form__variations__item" :key="`variation-${index}`"
            v-for="(variation,index) in form.variations">
-        <InputBlock class="cms-content__variations__item__input-block" v-model="form.variations[index].name"
+        <InputBlock class="cms-form__variations__item__input-block" v-model="form.variations[index].name"
                     :properties="{id: `cms-add-product-variation-${index}-name`, text:'Название', type:'text', name:'name', required:true}"/>
-        <InputBlock class="cms-content__variations__item__input-block" v-model="form.variations[index].price"
+        <InputBlock class="cms-form__variations__item__input-block" v-model="form.variations[index].price"
                     :properties="{id: `cms-add-product-variation-${index}-price`, text:'Цена', type:'number', name:'price', required:true}"/>
         <button :disabled="form.variations.length<=1" type="button" @click="removeVariation(index)"
-                class="cms-content__variations__item__remove">{{ index }} | Удалить
+                class="cms-form__variations__item__remove">{{ index }} | Удалить
         </button>
       </div>
 
       <button @click.prevent="addVariation">Добавить вариацию</button>
     </div>
-    <button type="submit" class="cms-content__submit">Добавить</button>
+    <button type="submit" class="cms-form__submit">Добавить</button>
   </form>
 </template>
 <script>
@@ -67,7 +67,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.cms-content {
+.cms-form {
   &__variations {
     &__item {
       display: flex;
